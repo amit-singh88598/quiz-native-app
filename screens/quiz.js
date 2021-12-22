@@ -7,11 +7,31 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import CheckBox from 'react-native-check-box';
+import CheckBox from 'react-native-checkbox-animated';
+
+import {RadioButton} from 'react-native-paper';
+
+const data = [
+  {
+    label: 'one',
+  },
+  {
+    label: 'two',
+  },
+  {
+    label: 'three',
+  },
+  {
+    label: 'four',
+  },
+];
 
 function Quiz({navigation}) {
   const [text, onChangeText] = React.useState();
-  const [selected, setSelected] = React.useState(false);
+  const [checked, setChecked] = React.useState(false);
+
+  const [value, setValue] = React.useState('first');
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.flex}>
@@ -20,30 +40,36 @@ function Quiz({navigation}) {
           Which among the following example is a right combination?
         </Text>
       </View>
-      <CheckBox
-        style={styles.checkbox}
-        onClick={() => {
-          setSelected(true);
-        }}
-        // isChecked={setSelected}
-        rightText={'CheckBox'}
-      />
-      <CheckBox
-        style={styles.checkbox}
-        onClick={() => {
-          setSelected(true);
-        }}
-        // isChecked={setSelected}
-        rightText={'CheckBox'}
-      />
-      <CheckBox
-        style={styles.checkbox}
-        onClick={() => {
-          setSelected(true);
-        }}
-        // isChecked={setSelected}
-        rightText={'CheckBox'}
-      />
+      <View>
+        {/* {data.map((item, index) => (
+          <CheckBox
+            key={index}
+            label={item.label}
+            // onValueChange={val => setChecked(val)}
+            onClick={() => setChecked(!checked)}
+            checked={checked}
+            checkboxContainerStyle={{padding: 10}}
+          />
+        ))} */}
+        {/* <RadioButton
+          title={'sikdhfi'}
+          label={'The first option'}
+          value={'first'}
+          status={checked === 'first' ? 'checked' : 'unchecked'}
+          onPress={() => setChecked('first')}
+        /> */}
+        {/* <RadioButton
+          value="second"
+          status={checked === 'second' ? 'checked' : 'unchecked'}
+          onPress={() => setChecked('second')}
+        /> */}
+        <RadioButton.Group
+          onValueChange={value => setValue(value)}
+          value={value}>
+          <RadioButton.Item label="First item" value="first" />
+          <RadioButton.Item label="Second item" value="second" />
+        </RadioButton.Group>
+      </View>
       <View>
         <TextInput
           style={styles.input}

@@ -22,18 +22,17 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#f5f5f5',
   },
   text: {
-    fontSize: 26,
+    fontSize: 28,
     fontWeight: 'bold',
-    padding: 20,
+    textAlign: 'center',
+    marginTop: 50,
   },
   btn: {
-    flex: 1,
+    flex: 0.3,
+    padding: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
